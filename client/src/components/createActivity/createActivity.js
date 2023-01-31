@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Styles from "./createActivity.module.css";
 import { Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import Styles from "./createActivity.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { validate } from "./validation";
+import { getCountries } from "../../redux/actions";
+import Loader from "../loader/loader";
 
 const CreateActivity = () => {
   // traigo todos los paises para usarlo en el select
-  const getCountries = useSelector((state) => state.allCountries);
+  const AllCountries = useSelector((state) => state.allCountries);
+  const loading = useSelector((state) => state.loading);
+  const dispatch = useDispatch();
+
+  // cada que se actualiza dispatch cargame el store
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
 
   //guardo los valores para madarlo al post
   const [form, setForm] = useState({
@@ -22,12 +32,14 @@ const CreateActivity = () => {
   const [errors, setErrors] = useState({
     name: "",
     countries: [],
+    difficulty: "",
   });
 
   // al mandar los datos que me redirija al home
   const [succes, setSucces] = useState(false);
 
   // funcion para guardar los valores en el estado
+  // const handleClick = () => {};
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -44,6 +56,12 @@ const CreateActivity = () => {
     );
   };
 
+  const handleDelete = (name) => {
+    setForm({
+      ...form,
+      countries: form.countries.filter((country) => country !== name),
+    });
+  };
   // al hacer submit del form mando el post con los datos del estado
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,8 +76,9 @@ const CreateActivity = () => {
   };
   return (
     <>
-      {succes ? (
-        <Redirect to="/home" />
+      {succes && <Redirect to="/home" />}
+      {loading ? (
+        <Loader />
       ) : (
         <div className={Styles.div_form}>
           <div className={Styles.background}>
@@ -95,6 +114,9 @@ const CreateActivity = () => {
                     onChange={handleChange}
                     className={Styles.form_input}
                   />
+                  {errors.difficulty && (
+                    <p className={Styles.error}>{errors.difficulty}</p>
+                  )}
                 </div>
 
                 <div className={Styles.form_label}>
@@ -107,7 +129,6 @@ const CreateActivity = () => {
                     <option value="" className={Styles.option_none}>
                       Choose an option
                     </option>
-
                     <option value="Winter">Winter</option>
                     <option value="Autumn">Autumn</option>
                     <option value="Summer">Summer</option>
@@ -134,6 +155,7 @@ const CreateActivity = () => {
                 </div>
                 <div className={Styles.form_label}>
                   <label className={Styles.label}>Countries</label>
+
                   <select
                     className={
                       errors.countries ? Styles.errors_input : Styles.form_input
@@ -144,8 +166,8 @@ const CreateActivity = () => {
                     <option value="" className={Styles.option_none}>
                       Choose an option
                     </option>
-                    {getCountries?.map((name) => (
-                      <option value={name.id} name="countries" key={name.id}>
+                    {AllCountries?.map((name) => (
+                      <option value={name.id} name="countries" key={name.name}>
                         {name.name}
                       </option>
                     ))}
@@ -159,6 +181,19 @@ const CreateActivity = () => {
                     SUBMIT
                   </button>
                 </div>
+              </div>
+              <div className={Styles.select_country}>
+                {form.countries.map((country, id) => (
+                  <div key={id} className={Styles.select_country_content}>
+                    {country}
+                    <button
+                      className={Styles.select_country_button}
+                      onClick={() => handleDelete(country)}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
               </div>
             </form>
           </div>

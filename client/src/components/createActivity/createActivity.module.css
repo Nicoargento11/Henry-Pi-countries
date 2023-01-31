@@ -10,7 +10,7 @@ b5179e magenta
 4cc9f0 light cyan */
 
 .div_form {
-    margin-top: 2%;
+    margin-top: 1%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,11 +32,12 @@ b5179e magenta
     background-color: #e1e1e5;
     color: #1f1f29;
     width: 30%;
-    height: 92.5vh;
+    height: fit-content;
     border-radius: 30px;
 }
 
 .form_container {
+    display: flex;
     width: 100%;
 }
 .form {
@@ -73,6 +74,9 @@ b5179e magenta
 }
 
 .form_button_submmit {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
     width: 90%;
     height: 30px;
     background-color: #560bad;
@@ -130,4 +134,38 @@ h1 {
     height: 30px;
     border: 2px solid red;
     border-radius: 5px;
+}
+
+.select_country {
+    display: flex;
+
+    flex-wrap: wrap;
+    color: #1f1f29;
+    height: fit-content;
+    width: 20%;
+
+}
+
+.select_country_content {
+    margin-left: 2.5px;
+    margin-top: 5px;
+    background-color: #b5179e;
+    border-radius: 5px;
+    font-weight: bold;
+    height: fit-content;
+    width: 40%;
+}
+.select_country_button {
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+}
+
+.select_country_button:hover {
+    cursor: pointer;
+    background-color: #1f1f29;
+    color: #b5179e;
 }

@@ -54,7 +54,7 @@ const DetailCountries = () => {
           {detail.TouristActivities?.length ? (
             detail.TouristActivities?.map(({ name, season, duration, id }) => (
               <div key={id} className={Styles.div_activities}>
-                <h3>Activitie: {name}</h3>
+                <h3>Activity: {name}</h3>
                 <h3>Season: {season}</h3>
                 {duration > 1 ? (
                   <h3>Duration: {duration} minutes</h3>

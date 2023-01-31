@@ -49,6 +49,7 @@ b5179e magenta
 }
 
 .button_detail {
+    opacity: 100%;
     margin-top: auto;
     margin-bottom: 10px;
     margin-left: auto;

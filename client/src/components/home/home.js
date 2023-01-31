@@ -17,23 +17,25 @@ function Home({ getCountries, paginateCards }) {
     getCountries();
   }, []);
 
-  //Paginate variables
-  const currentPage = useSelector((state) => state.currentPage);
-  const countries = useSelector((state) => state.continents);
-  const loading = useSelector((state) => state.loading);
-  // const { countries, currentPage } = useSelector((state) => ({
-  //   currentPage: state.currentPage,
-  //   countries: state.continents,
-  //   loading: state.loading,
-  // }));
-  if (currentPage === 1) cardsPerPage = 9;
+  //paginado variables
+  const { currentPage, countries, loading } = useSelector((state) => ({
+    currentPage: state.currentPage,
+    countries: state.continents,
+    loading: state.loading,
+  }));
+
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  let currentCards = countries.slice(indexOfFirstCard, indexOfLastCard);
+
+  let currentCards =
+    currentPage === 1
+      ? countries.slice(indexOfFirstCard, indexOfLastCard - 1)
+      : countries.slice(indexOfFirstCard - 1, indexOfLastCard - 1);
 
   useEffect(() => {
     paginateCards(currentCards);
   }, [currentCards]);
+
   return (
     <>
       <NavBar></NavBar>
@@ -43,7 +45,6 @@ function Home({ getCountries, paginateCards }) {
         <div className={Styles.container}>
           <FilterCountries></FilterCountries>
           <div className={Styles.cards_paginate}>
-            <h1>All countries</h1>
             <Cards />
             <Pagination cardsPerPage={cardsPerPage} />
           </div>

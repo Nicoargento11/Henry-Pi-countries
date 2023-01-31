@@ -157,14 +157,14 @@ const mapDispatchToProps = (dispatch) => {
     getByOrder: (order) => {
       dispatch(getByOrder(order));
     },
-    changePages: (number) => {
-      dispatch(changePages(number));
-    },
     filterByActivity: (countries) => {
       dispatch(filterByActivity(countries));
     },
     getByPopulation: (population) => {
       dispatch(getByPopulation(population));
+    },
+    changePages: (number) => {
+      dispatch(changePages(number));
     },
   };
 };
