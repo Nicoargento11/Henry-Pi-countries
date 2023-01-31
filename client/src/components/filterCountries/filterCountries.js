@@ -8,6 +8,7 @@ import {
   getByPopulation,
 } from "../../redux/actions";
 import Styles from "./filterCountries.module.css";
+import axios from "axios";
 
 const FilterCountries = ({
   getByContinent,
@@ -19,17 +20,30 @@ const FilterCountries = ({
   const [activities, setActivities] = useState(null);
 
   useEffect(() => {
+    const CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/activities");
-        const response = await res.json();
+        const res = await axios.get("http://localhost:3001/activities", {
+          cancelToken: source.token,
+        });
+        const response = res.data;
         setActivities(response.allActivities);
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log("Request canceled", error.message);
+        } else {
+          console.log(error);
+        }
       }
     };
 
     fetchData();
+
+    return () => {
+      source.cancel("Cancelling in cleanup");
+    };
   }, []);
 
   const allCountries = useSelector((state) => state.allCountries);

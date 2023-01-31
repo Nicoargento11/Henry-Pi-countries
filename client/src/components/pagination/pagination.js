@@ -29,7 +29,11 @@ const Pagination = ({ cardsPerPage }) => {
         <button className={Styles.button} onClick={() => previousPage()}>
           Previous Page
         </button>
-        <input className={Styles.button_input} value={currentPage} />
+        <input
+          className={Styles.button_input}
+          value={currentPage}
+          onChange={() => {}}
+        />
         <p className={Styles.button_input}>of {max}</p>
         <button className={Styles.button} onClick={() => nextPage()}>
           Next Page

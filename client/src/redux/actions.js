@@ -12,18 +12,17 @@ export const SHOW_LOADING = "SHOW_LOADING";
 export const HIDE_LOADING = "HIDE_LOADING";
 export const GET_BY_POPULATION = "GET_BY_POPULATION";
 
-const url = "http://localhost:3001";
-
 export const getCountries = () => {
-  return function (dispatch) {
-    dispatch(showLoading());
-    fetch(`${url}/countries`)
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({ type: GET_COUNTRIES, payload: data.countries })
-      )
-      .then(() => dispatch(hideLoading()))
-      .catch((error) => alert(error.message));
+  return async function (dispatch) {
+    try {
+      dispatch(showLoading());
+
+      const allCountries = await axios.get(`/countries`);
+      dispatch({ type: GET_COUNTRIES, payload: allCountries.data.countries });
+      dispatch(hideLoading());
+    } catch (error) {
+      alert(error.message);
+    }
   };
 };
 
@@ -31,7 +30,7 @@ export const getCountryDetail = (id) => {
   return async function (dispatch) {
     try {
       dispatch(showLoading());
-      const detailCountry = await axios.get(`${url}/countries/${id}`);
+      const detailCountry = await axios.get(`/countries/${id}`);
       dispatch({ type: GET_COUNTRY_DETAIL, payload: detailCountry.data });
       dispatch(hideLoading());
     } catch (error) {
