@@ -1,0 +1,78 @@
+/* f72585 pink
+b5179e magenta
+7209b7 violet
+560bad dark violet
+480ca8 violet/blue
+3a0ca3 darkblue
+3f37c9 blue
+4361ee light blue
+4895ef cyan
+4cc9f0 light cyan */
+
+
+.div_container {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #b5179e;
+    margin: 5px;
+    background-image: url("https://i.pinimg.com/564x/6f/1c/1a/6f1c1a1cccc537281b076290aefe8ca7.jpg");
+    width: 25%;
+    height: 400px;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.div_container:hover {
+  transform: scale(1.05);
+}
+
+.img {
+    margin-top: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid #480ca8; 
+    opacity: 100%;
+}
+
+.line {
+    margin-top: 10px;
+    width: 70%;
+    height: 3.5px;
+    background-color: #3a0ca3;
+}
+
+.detail {
+    font-size: 20px;
+}
+
+.button_detail {
+    margin-top: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+    height: 45px;
+    width: 150px;
+    font-size: 15px;
+    background-color: #212121;
+    border: 2px solid #b5179e;
+    color: #b5179e;
+    border-radius: 5px;
+}
+
+  .button_detail:hover {
+    border: 2px solid #3a0ca3;
+    box-shadow: 0px 0px 15px #4361ee;
+    transition: .1s;
+    cursor: pointer; 
+    color: #4361ee;
+  }
+
+  .link_button_detail{
+    margin-top: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+  }

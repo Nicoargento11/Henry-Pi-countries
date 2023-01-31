@@ -1,0 +1,14 @@
+
+.container{
+    display: flex;
+}
+
+.aux {
+    width: 20%;
+}
+
+.cards_paginate{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}

@@ -1,0 +1,133 @@
+/* f72585 pink
+b5179e magenta
+7209b7 violet
+560bad dark violet
+480ca8 violet/blue
+3a0ca3 darkblue
+3f37c9 blue
+4361ee light blue
+4895ef cyan
+4cc9f0 light cyan */
+
+.div_form {
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tittle_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #560bad;
+    width: 100%;
+    border-top-left-radius: 29px;
+    border-top-right-radius: 29px;
+}
+
+.background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e1e1e5;
+    color: #1f1f29;
+    width: 30%;
+    height: 92.5vh;
+    border-radius: 30px;
+}
+
+.form_container {
+    width: 100%;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_label {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.label {
+    color: #7209b7;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.form_input {
+    font-size: 15px;
+    margin-top: 10px;
+    width: 80%;
+    height: 30px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: center;
+}
+
+.form_button_submmit {
+    width: 90%;
+    height: 30px;
+    background-color: #560bad;
+    color: #e1e1e5;
+    border-radius: 10px;
+}
+
+.form_button_submmit:hover {
+    cursor: pointer;
+    background-color: #3a0ca3;
+}
+
+.button_back {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.button_back:hover {
+    cursor: pointer;
+    background-color: #1f1f29;
+    color: #b5179e;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+.output_duration {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #7209b7;
+}
+
+.option_none {
+    display: none
+}
+
+.error {
+    margin: 0;
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.errors_input {
+    font-size: 15px;
+    margin-top: 10px;
+    width: 80%;
+    height: 30px;
+    border: 2px solid red;
+    border-radius: 5px;
+}
