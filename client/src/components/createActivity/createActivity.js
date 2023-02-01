@@ -67,7 +67,10 @@ const CreateActivity = () => {
     e.preventDefault();
     try {
       if (!errors.name && !errors.countries) {
-        await axios.post("http://localhost:3001/activities", form);
+        await axios.post(
+          "https://henry-pi-countries-production.up.railway.app/activities",
+          form
+        );
         setSucces(true);
       }
     } catch (error) {

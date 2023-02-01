@@ -25,9 +25,12 @@ const FilterCountries = ({
 
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/activities", {
-          cancelToken: source.token,
-        });
+        const res = await axios.get(
+          "https://henry-pi-countries-production.up.railway.app/activities",
+          {
+            cancelToken: source.token,
+          }
+        );
         const response = res.data;
         setActivities(response.allActivities);
       } catch (error) {
