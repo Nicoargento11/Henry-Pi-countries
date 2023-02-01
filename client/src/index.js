@@ -7,7 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import axios from "axios";
-axios.defaults.baseURL = "https://henry-pi-countries-three.vercel.app/";
+axios.defaults.baseURL =
+  "https://henry-pi-countries-production.up.railway.app/";
 
 ReactDOM.render(
   <React.StrictMode>
